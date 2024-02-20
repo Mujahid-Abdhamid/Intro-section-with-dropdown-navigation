@@ -37,10 +37,20 @@ body {
 }
 
 /* ****************** */
+/* HELPER CLASS */
+/* ****************** */
+
+.hidden {
+  display: none;
+}
+
+/* ****************** */
 /* HEADER */
 /* ****************** */
 
 .header {
+  max-width: 140rem;
+  margin: 0 auto;
   padding: 4.8rem;
   display: flex;
   align-items: center;
@@ -75,12 +85,18 @@ body {
   display: inline-block;
   text-decoration: none;
   color: hsl(0, 0%, 41%);
+  font-size: 1.6rem;
   font-weight: 400;
   transition: all 0.3s;
 }
 
 .main-nav__link > span {
   margin-right: 0.5rem;
+}
+
+.open,
+.close {
+  cursor: pointer;
 }
 
 /* ****************** */
@@ -92,7 +108,6 @@ body {
   box-shadow: 0 1.2rem 2.4rem rgba(20, 20, 20, 0.09);
   padding: 2rem 3.2rem;
   border-radius: 0.9rem;
-  /* max-width: 10rem; */
 
   position: absolute;
   top: 9rem;
@@ -160,7 +175,11 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 9.6rem;
-  align-items: center;
+  /* align-items: center; */
+}
+
+.hero-text-box {
+  padding: 10rem 0 0;
 }
 
 .heading-primary {
@@ -192,7 +211,7 @@ body {
   cursor: pointer;
   transition: all 0.3s;
 
-  margin-bottom: 4.8rem;
+  margin-bottom: 12rem;
 }
 
 .btn-full:hover,
@@ -206,6 +225,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  /* margin-top: 4rem; */
 }
 
 .hero-img {
@@ -225,35 +245,41 @@ body {
 }
 
 /* ****************** */
-/* HELPER CLASS */
+/* Media queries to make the design adapt to various screen sizes */
 /* ****************** */
 
-.hidden {
-  display: none;
-}
-/* .message {
-  display: inline-block;
-  background-color: hsl(0, 0%, 98%);
-  box-shadow: 0 1.2rem 2.4rem rgba(0, 0, 0, 0.15);
-  border-radius: 0.5rem;
-  padding: 2.4rem;
+/* ****************** */
+/* Responding to laptop-md(1302px) */
+/* ****************** */
 
-  position: relative;
-}
+@media (max-width: 82em) {
+  html {
+    font-size: 56.25%;
+  }
 
-.message::before {
-  content: "";
-  width: 2.5rem;
-  height: 2.5rem;
-  position: absolute;
-  top: 0;
-  right: -12px;
-  background: linear-gradient(
-    135deg,
-    hsl(0, 0%, 98%) 0%,
-    hsl(0, 0%, 98%),
-    50%,
-    transparent 50%,
-    transparent
-  );
-} */
+/* ****************** */
+/* Responding to laptop-sm(1111px) */
+/* ****************** */
+
+@media (max-width: 70em) {
+  html {
+    font-size: 50%;
+  }
+}
+/* ****************** */
+/* Responding to tablet-lg(961px) */
+/* ****************** */
+
+@media (max-width: 61em) {
+  .heading-primary {
+    font-size: 6.4rem;
+  }
+
+  .hero-description {
+    font-size: 1.8rem;
+  }
+
+  .hero-img {
+    width: 90%;
+  }
+}
