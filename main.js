@@ -5,27 +5,34 @@ const btnOpen = document.querySelectorAll(".nav-list__item");
 const closeIcon = document.querySelectorAll(".close");
 const openIcon = document.querySelectorAll(".open");
 
-// Hide the open icon by default
-openIcon.forEach((openI) => {
-  openI.classList.add("hidden");
-});
-
-// Implementing the open functionality
+// Implementing the open functionality and close functionality
 btnOpen.forEach((open, index) => {
   open.addEventListener("click", function () {
-    // Hide all dropdown by default
-    dropDown.forEach((dropdown, i) => {
+    // Hide the dropdown by default
+    const currentDropDown = dropDown[index];
+    const isOpen = !currentDropDown.classList.contains("hidden");
+
+    dropDown.forEach((dropdown) => {
       dropdown.classList.add("hidden");
-      closeIcon[i].classList.remove("hidden");
-      openIcon[i].classList.add("hidden");
     });
 
-    // Hide the closeIcon and display the openIcon
-    closeIcon[index].classList.add("hidden");
-    openIcon[index].classList.remove("hidden");
+    // Toggle between hiding and showing the close and open icons
+    closeIcon[index].classList.toggle("hidden");
+    openIcon[index].classList.toggle("hidden");
 
     // Display the corresponding dropdown
-    const currentDropDown = dropDown[index];
-    currentDropDown.classList.remove("hidden");
+    if (!isOpen) {
+      currentDropDown.classList.remove("hidden");
+    }
+  });
+
+  // Implementing the close functionality
+  closeIcon[index].addEventListener("click", function () {
+    // Hide the corresponding modal
+    dropDown[index].classList.add("hidden");
+
+    // Hide the close icon and display the open icon
+    closeIcon[index].classList.add("hidden");
+    openIcon[index].classList.remove("hidden");
   });
 });
