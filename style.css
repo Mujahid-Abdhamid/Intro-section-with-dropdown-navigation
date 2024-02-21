@@ -52,18 +52,16 @@ body {
   max-width: 140rem;
   margin: 0 auto;
   padding: 4.8rem;
-  display: flex;
+  /* display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 4.8rem; */
+  display: grid;
+  grid-template-columns: 1fr 8fr;
+  align-items: center;
 
   position: relative;
 }
 
-.header-nav {
-  display: flex;
-  align-items: center;
-  gap: 5.4rem;
-}
 
 /* ****************** */
 /* NAVIGATION */
@@ -71,6 +69,7 @@ body {
 .main-nav {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .main-nav-list {
@@ -139,7 +138,7 @@ body {
 /* CTA*/
 /* ****************** */
 
-.cta {
+.nav-cta {
   display: flex;
   align-items: center;
   gap: 3.2rem;
@@ -244,12 +243,16 @@ body {
   color: hsl(228, 45%, 44%);
 }
 
+.menu {
+  cursor: pointer;
+}
+
 /* ****************** */
 /* Media queries to make the design adapt to various screen sizes */
 /* ****************** */
 
 /* ****************** */
-/* Responding to laptop-md(1302px) */
+/* Responding to laptop-md(Below 1302px) */
 /* ****************** */
 
 @media (max-width: 82em) {
@@ -258,19 +261,18 @@ body {
   }
 
 /* ****************** */
-/* Responding to laptop-sm(1111px) */
+/* Responding to laptop-sm(Below 1111px) */
 /* ****************** */
 
 @media (max-width: 70em) {
   html {
     font-size: 50%;
   }
-}
-/* ****************** */
-/* Responding to tablet-lg(961px) */
-/* ****************** */
 
-@media (max-width: 61em) {
+   .hero {
+    align-items: center;
+  }
+  
   .heading-primary {
     font-size: 6.4rem;
   }
@@ -278,8 +280,83 @@ body {
   .hero-description {
     font-size: 1.8rem;
   }
+}
+/* ****************** */
+/* Responding to tablet-lg(961px) */
+/* ****************** */
 
-  .hero-img {
-    width: 90%;
+@media (max-width: 59em) {
+  .header {
+    justify-items: self-end;
+  }
+
+
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-text-box,
+  .hero-img-box {
+    text-align: center;
+  }
+
+  .hero-img-box {
+    grid-row: 1 / 2;
+  }
+
+  .hero-text-box {
+    padding: 0 12.8rem;
+  }
+
+  .hero-description {
+    font-size: 2rem;
+    line-height: 1.8;
+  }
+
+  /* Mobile nav */
+
+  /* .main-nav {
+    display: none;
+  } */
+
+  .main-nav {
+     background-color: rgba(255, 255, 255, 0.97);
+     padding: 4.8rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40%;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 2.4rem;
+    transition: all 0.5s ease-in;
+    /* transform: translateX(100%); */
+
+    /* (1) Hide the element visually */
+    opacity: 0;
+
+    /* (2) Make it unaccesible to mouse and keyboard */
+    pointer-events: none;
+
+    /* (3) Hide it from screen readers */
+    /* visibility: hidden; */
+  }
+
+  .main-nav-list {
+    flex-direction: column;
+  }
+
+  .nav-cta {
+    flex-direction: column;
+    font-size: 2.4rem;
+  }
+
+  .main-nav__link:link,
+  .main-nav__link:visited {
+    font-size: 2.4rem;
   }
 }
